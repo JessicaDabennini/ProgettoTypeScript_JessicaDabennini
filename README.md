@@ -56,3 +56,5 @@ Prodotto, Cliente, e ProcessoProduzione, ognuna con le proprie interfacce e clas
 
 <p>console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiCompletati());</p>
 <p>console.log("Inventario in Produzione: " + ProcessoProduzione.getProdottiInProduzione());</p>
+
+<h2>Per eseguire il codice, assicurati di avere TypeScript installato.</h2>

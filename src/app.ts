@@ -50,7 +50,7 @@ class Prodotto implements Iprodotto {
             console.log('Prodotto non disponibile');
         }
     }
-    }
+}
 
  class Cliente implements Icliente {
     nome: string;
@@ -116,8 +116,9 @@ class ProcessoProduzione implements IprocessoProduzione {
         this.produzione.push(prodotto);
         console.log(this.descrizione);
         ProcessoProduzione.prodottiInProduzione.push(prodotto);          
-    }
       }
+    }
+      
       static getProdottiInProduzione(): number[] {
         return ProcessoProduzione.prodottiInProduzione.map(prodotto => ( prodotto.id ));
       }
@@ -125,8 +126,7 @@ class ProcessoProduzione implements IprocessoProduzione {
       static getProdottiCompletati(): number[] {
         return ProcessoProduzione.prodottiCompletati.map(prodotto => ( prodotto.id ));
       }
-    }
-
+}
 
  let prodotto1 = new Prodotto(1, 'Bikini', 42, 'blu', true, 50);
  console.log(prodotto1);
