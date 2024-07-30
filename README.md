@@ -9,13 +9,13 @@ Prodotto, Cliente, e ProcessoProduzione, ognuna con le proprie interfacce e clas
 
 <h1>Classi</h1>
 
-<h2>Prodotto: Implementa l'interfaccia Iprodotto e aggiunge la proprietà prezzo.</h2>
+<h2>Prodotto: Implementa l'interfaccia Iprodotto.</h2>
 
 <p>class Prodotto implements Iprodotto {
     // Costruttore e metodi
 }</p>
 
-<h2>Cliente: Implementa l'interfaccia Icliente e aggiunge le proprietà indirizzo e saldoConto.</h2>
+<h2>Cliente: Implementa l'interfaccia Icliente.</h2>
 
 <p>class Cliente implements Icliente {
     // Costruttore e metodi
@@ -45,7 +45,7 @@ Prodotto, Cliente, e ProcessoProduzione, ognuna con le proprie interfacce e clas
 
 <h2>Creazione di Clienti e Ordini</h2>
 
-<p>let cliente1 = new Cliente('Jessica', 'Verdi', 'jessica.dabennini@me.com', 'Roma', 'Carta di credito', 100);</p>
+<p>let cliente1 = new Cliente('Jessica', 'Verdi', 'jessica.verdi@me.com', 'Roma', 'Carta di credito', 100);</p>
 <p>cliente1.ordinaProdotto(prodotto1);</p>
 <p>cliente1.ordinaProdotto(prodotto2);</p>
 <p>let cliente2 = new Cliente('Roberto', 'Rossi', 'roberto.rossi@me.com', 'Milano', 'PayPal', 50);</p>

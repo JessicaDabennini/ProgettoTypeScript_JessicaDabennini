@@ -151,7 +151,7 @@ class ProcessoProduzione implements IprocessoProduzione {
  console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiCompletati());
  console.log("Inventario in Produzione: " + ProcessoProduzione.getProdottiInProduzione());
 
- let cliente1 = new Cliente('Jessica', 'Verdi ', 'jessica.dabennini@me.com', 'Roma', 'Carta di credito', 100);
+ let cliente1 = new Cliente('Jessica', 'Verdi ', 'jessica.verdi@me.com', 'Roma', 'Carta di credito', 100);
  console.log(cliente1);
  cliente1.ordinaProdotto(prodotto1);
  cliente1.ordinaProdotto(prodotto2);
