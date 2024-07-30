@@ -49,31 +49,37 @@ var Cliente = /** @class */ (function () {
 var ProcessoProduzione = /** @class */ (function () {
     function ProcessoProduzione(nomeProcesso, inProduzione, descrizione, disponibile) {
         this.inventario = [];
+        this.produzione = [];
         this.nomeProcesso = nomeProcesso;
         this.inProduzione = inProduzione;
         this.descrizione = descrizione;
         this.disponibile = disponibile;
     }
     ProcessoProduzione.prototype.aggiungiProdotto = function (prodotto) {
-        if (this.nomeProcesso === 'completato') {
+        if (this.nomeProcesso === 'completato', this.disponibile === true) {
             this.inventario.push(prodotto);
             this.descrizione = 'il prodotto è pronto per essere acquistato';
             this.disponibile = true;
             console.log(this.descrizione);
+            ProcessoProduzione.prodottiCompletati.push(prodotto);
         }
         else {
             this.nomeProcesso = 'produzione';
             this.descrizione = 'Il prodotto è in produzione';
             this.disponibile = false;
-            this.inventario.push(prodotto);
+            this.produzione.push(prodotto);
             console.log(this.descrizione);
+            ProcessoProduzione.prodottiInProduzione.push(prodotto);
         }
-        ProcessoProduzione.prodottiAggiunti.push(prodotto);
     };
-    ProcessoProduzione.getProdottiAggiunti = function () {
-        return ProcessoProduzione.prodottiAggiunti.map(function (prodotto) { return prodotto.id && prodotto.tipo; });
+    ProcessoProduzione.getProdottiInProduzione = function () {
+        return ProcessoProduzione.prodottiInProduzione.map(function (prodotto) { return (prodotto.id); });
     };
-    ProcessoProduzione.prodottiAggiunti = [];
+    ProcessoProduzione.getProdottiCompletati = function () {
+        return ProcessoProduzione.prodottiCompletati.map(function (prodotto) { return (prodotto.id); });
+    };
+    ProcessoProduzione.prodottiInProduzione = [];
+    ProcessoProduzione.prodottiCompletati = [];
     return ProcessoProduzione;
 }());
 var prodotto1 = new Prodotto(1, 'Bikini', 42, 'blu', true, 50);
@@ -92,8 +98,9 @@ var prodotto4 = new Prodotto(4, 'Slip', 52, 'arancio', true, 30);
 console.log(prodotto4);
 var processoProduzione4 = new ProcessoProduzione('produzione', [prodotto4], ProcessoProduzione.descrizione, false);
 processoProduzione4.aggiungiProdotto(prodotto4);
-console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiAggiunti());
-var cliente1 = new Cliente('Jessica', 'Verdi ', 'jessica.dabennini@me.com', 'Roma', 'Carta di credito', 100);
+console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiCompletati());
+console.log("Inventario in Produzione: " + ProcessoProduzione.getProdottiInProduzione());
+var cliente1 = new Cliente('Jessica', 'Verdi ', 'jessica.verdi@me.com', 'Roma', 'Carta di credito', 100);
 console.log(cliente1);
 cliente1.ordinaProdotto(prodotto1);
 cliente1.ordinaProdotto(prodotto2);
