@@ -90,8 +90,9 @@ class ProcessoProduzione implements IprocessoProduzione {
     inProduzione: Prodotto[];  
     disponibile: boolean;
     private inventario: Prodotto[] = [];
-    private static prodottiAggiunti: Prodotto[] = [];
-    static descrizione: string;
+    private static prodottiInProduzione: Prodotto[] = [];
+    private static prodottiCompletati: Prodotto[] = [];    static descrizione: string;
+    private produzione: Prodotto[] = [];
   
     constructor(nomeProcesso: string, inProduzione: Prodotto[], descrizione: string, disponibile: boolean) {
       this.nomeProcesso = nomeProcesso;
@@ -101,25 +102,31 @@ class ProcessoProduzione implements IprocessoProduzione {
     }
   
     aggiungiProdotto(prodotto: Prodotto): void {
-      if (this.nomeProcesso === 'completato') {
+      if (this.nomeProcesso === 'completato', this.disponibile === true) {
         this.inventario.push(prodotto);            
         this.descrizione = 'il prodotto è pronto per essere acquistato';
         this.disponibile = true;
         console.log(this.descrizione);
+        ProcessoProduzione.prodottiCompletati.push(prodotto);
+
       } else {
         this.nomeProcesso = 'produzione';
         this.descrizione = 'Il prodotto è in produzione';
         this.disponibile = false;
-        this.inventario.push(prodotto);
+        this.produzione.push(prodotto);
         console.log(this.descrizione);
-      }
-      ProcessoProduzione.prodottiAggiunti.push(prodotto);
+        ProcessoProduzione.prodottiInProduzione.push(prodotto);          
     }
-  
-    static getProdottiAggiunti(): any[] {
-        return ProcessoProduzione.prodottiAggiunti.map(prodotto => (prodotto.id));
       }
-  }
+      static getProdottiInProduzione(): number[] {
+        return ProcessoProduzione.prodottiInProduzione.map(prodotto => ( prodotto.id ));
+      }
+    
+      static getProdottiCompletati(): number[] {
+        return ProcessoProduzione.prodottiCompletati.map(prodotto => ( prodotto.id ));
+      }
+    }
+
 
  let prodotto1 = new Prodotto(1, 'Bikini', 42, 'blu', true, 50);
  console.log(prodotto1);
@@ -141,7 +148,8 @@ class ProcessoProduzione implements IprocessoProduzione {
  let processoProduzione4 = new ProcessoProduzione('produzione', [prodotto4], ProcessoProduzione.descrizione, false);
  processoProduzione4.aggiungiProdotto(prodotto4);
 
- console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiAggiunti());
+ console.log("Inventario Magazzino: " + ProcessoProduzione.getProdottiCompletati());
+ console.log("Inventario in Produzione: " + ProcessoProduzione.getProdottiInProduzione());
 
  let cliente1 = new Cliente('Jessica', 'Verdi ', 'jessica.dabennini@me.com', 'Roma', 'Carta di credito', 100);
  console.log(cliente1);
