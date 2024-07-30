@@ -1,4 +1,4 @@
-Questo progetto TypeScript simula un sistema di gestione della produzione e vendita di prodotti. Include tre entità principali: Prodotto, Cliente, e ProcessoProduzione, ognuna con le proprie interfacce e classi di implementazione.
+<h1>Questo progetto TypeScript simula un sistema di gestione della produzione e vendita di prodotti. Include tre entità principali: Prodotto, Cliente, e ProcessoProduzione, ognuna con le proprie interfacce e classi di implementazione.</h1>
 
 Interfacce
 Iprodotto: Definisce le proprietà e i metodi per un prodotto.
