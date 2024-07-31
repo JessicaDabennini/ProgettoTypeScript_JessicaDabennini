@@ -4,4 +4,4 @@ package-lock.json
 dist/
 webpack.config.js
 tsconfig.json
-src/app.js/
+src/app.js
